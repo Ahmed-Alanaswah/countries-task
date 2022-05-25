@@ -1,0 +1,14 @@
+.parentCard {
+  height: 100%;
+}
+.card {
+  background-color: aqua;
+  height: 100%;
+  width: "400px";
+  margin: "auto";
+  border: 1px solid #555;
+  padding: 10px;
+}
+.img {
+  width: 100%;
+}

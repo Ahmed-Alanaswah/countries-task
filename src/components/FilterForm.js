@@ -1,9 +1,9 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+
 const FilterForm = ({ handleFilterData }) => {
   return (
     <>
-      <Form.Select
+      <select
         name="cars"
         id="cars"
         placeholder="Filter By Region"
@@ -16,7 +16,7 @@ const FilterForm = ({ handleFilterData }) => {
         <option value="Asia">Asia</option>
         <option value="Europe">Europe</option>
         <option value="Oceania">Oceania</option>
-      </Form.Select>
+      </select>
     </>
   );
 };

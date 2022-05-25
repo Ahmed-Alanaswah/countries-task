@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+
 import axios from "axios";
+import classes from "./CountryInfo.module.css";
+
 const CountryInfo = ({ nameCountry, countries }) => {
   const [country, setCountry] = useState([]);
 
@@ -33,30 +35,36 @@ const CountryInfo = ({ nameCountry, countries }) => {
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={country.flag} />
-        <Card.Body>
-          <Card.Title>Native name: {country.nativeName}</Card.Title>
-          <Card.Text> Population: {country.population}</Card.Text>
-          <Card.Text> Region: {country.region}</Card.Text>
-          <Card.Text> Sub Region: {country.subregion}</Card.Text>
-          <Card.Text> Top Level Domain: {country.topLevelDomain}</Card.Text>
+      <div className={classes.cardInfo}>
+        <img className={classes.img} variant="top" src={country.flag} />
+        <div className={classes.body}>
+          <h3>Native name: {country.nativeName}</h3>
+          <p> Population: {country.population}</p>
+          <p> Region: {country.region}</p>
+          <p> Sub Region: {country.subregion}</p>
+          <p> Top Level Domain: {country.topLevelDomain}</p>
           {country.currenciesK && (
-            <Card.Text> Currencies: {country.currencies[0].name}</Card.Text>
+            <p> Currencies: {country.currencies[0].name}</p>
           )}
-          {country.languages &&
-            country.languages.map((lang) => (
-              <Card.Text> Languages: {lang.name}</Card.Text>
-            ))}
 
-          <Card.Text>
+          <ul>
+            {country.languages && <p>Languages:</p>}
+            {country.languages &&
+              country.languages.map((lang) => (
+                <li key={lang.name}>{lang.name}</li>
+              ))}
+          </ul>
+          {/* {country.languages &&
+            country.languages.map((lang) => <p> Languages: {lang.name}</p>)} */}
+
+          <ul>
             {borders.length > 0 && "Border Countries:"}
             {borders.map((border) => (
-              <li>{border}</li>
+              <li key={border}>{border}</li>
             ))}
-          </Card.Text>
-        </Card.Body>
-      </Card>
+          </ul>
+        </div>
+      </div>
     </>
   );
 };

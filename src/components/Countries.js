@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
 
+import classes from "./Countries.module.css";
 import CountryCard from "./CountryCard";
 import FilterForm from "./FilterForm";
 const Countries = ({ countries, getName }) => {
@@ -19,22 +19,18 @@ const Countries = ({ countries, getName }) => {
   };
 
   return (
-    <Container>
+    <div className={classes.container}>
       <FilterForm handleFilterData={handleFilterData} />
-      <Row>
+      <div className={classes.row}>
         {filteredData.length > 0
           ? filteredData.map((country) => (
-              <Col lg={3}>
-                <CountryCard country={country} sendName={sendName} />
-              </Col>
+              <CountryCard country={country} sendName={sendName} />
             ))
           : countries.map((country) => (
-              <Col lg={3}>
-                <CountryCard country={country} sendName={sendName} />
-              </Col>
+              <CountryCard country={country} sendName={sendName} />
             ))}
-      </Row>
-    </Container>
+      </div>
+    </div>
   );
 };
 

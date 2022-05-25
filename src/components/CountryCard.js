@@ -1,29 +1,33 @@
 import React from "react";
-import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import classes from "./CountryCard.module.css";
 const CountryCard = ({ country, sendName }) => {
   const navigate = useNavigate();
-  let slug;
+
   const handleChangePage = (name) => {
     sendName(name);
-    // slug = name.split(" ").join("-");
+
     navigate(`/info`);
 
     localStorage.setItem("name", JSON.stringify(name));
   };
 
   return (
-    <div onClick={() => handleChangePage(country.name)} to={`/info`}>
-      <Card style={{ width: "18rem", margin: "auto" }}>
-        <Card.Img variant="top" src={country.flag} />
-        <Card.Body>
-          <Card.Title>{country.name}</Card.Title>
-          <Card.Text> Population: {country.population}</Card.Text>
-          <Card.Text> Region: {country.region}</Card.Text>
-          <Card.Text> Capital: {country.capital}</Card.Text>
-        </Card.Body>
-      </Card>
+    <div
+      className={classes.parentCard}
+      onClick={() => handleChangePage(country.name)}
+      to={`/info`}
+    >
+      <div className={classes.card}>
+        <img className={classes.img} variant="top" src={country.flag} />
+        <div className={classes.body}>
+          <h3>{country.name}</h3>
+          <p> Population: {country.population}</p>
+          <p> Region: {country.region}</p>
+          <p> Capital: {country.capital}</p>
+        </div>
+      </div>
     </div>
   );
 };

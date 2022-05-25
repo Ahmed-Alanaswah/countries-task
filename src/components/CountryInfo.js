@@ -54,8 +54,6 @@ const CountryInfo = ({ nameCountry, countries }) => {
                 <li key={lang.name}>{lang.name}</li>
               ))}
           </ul>
-          {/* {country.languages &&
-            country.languages.map((lang) => <p> Languages: {lang.name}</p>)} */}
 
           <ul>
             {borders.length > 0 && "Border Countries:"}
